@@ -1,0 +1,6 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "assistant": "./graph/graphbuilder.py:app"
+  }
+}

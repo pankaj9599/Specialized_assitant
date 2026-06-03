@@ -1,0 +1,12 @@
+langchain 
+langgraph
+langsmith
+python-dotenv 
+langchain-groq
+langchain_core
+langchain_community
+langchain_tavily
+sentence_transformers
+chromadb
+pypdf
+langgraph-cli[inmem]
