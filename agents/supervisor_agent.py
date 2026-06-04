@@ -3,7 +3,7 @@ from tool.supervisor_tool import research_tool, web_tool
 
 def supervisor_agent(state):
     print("Running Supervisor")
-    query = state["query"]
+    query = state.get("rewritten_query", state["query"])
 
     prompt = f"""
     You are a routing agent.

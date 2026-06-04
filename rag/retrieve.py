@@ -43,7 +43,7 @@ class RAGRetriever:
                 metadatas = result['metadatas'][0]
                 distances = result['distances'][0]
                 ids = result['ids'][0]
-
+                print(f"metadatas: {metadatas}")
                 for i, (doc, md, distance, doc_id) in enumerate(zip(documents, metadatas, distances, ids)):
                     # Convert distance to similarity score using cosine similarity
                     similarity_score = 1 - distance

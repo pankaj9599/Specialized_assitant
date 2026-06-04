@@ -11,3 +11,20 @@ wheels/
 .env
 .env
 .env
+
+# Environment
+.env
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# ChromaDB
+data/vector_db/
+
+# LangGraph cache
+.langgraph_api/
+
+# MacOS
+.DS_Store

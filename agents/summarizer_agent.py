@@ -1,5 +1,6 @@
+from memory.save_history import save_history
 from tool.llm_tool import llm
-
+from tool.memory_extractor import memory_extractor
 def summarizer_agent(state):
     print("Running summarizer")
     review_output = state["review_output"]
@@ -28,7 +29,11 @@ def summarizer_agent(state):
     """
 
     response = llm.invoke(summarize_prompt)
+    
 
     state["summarizer_output"] = response.content
 
+    memory_extractor(state)
+    save_history(state)
+    
     return state
