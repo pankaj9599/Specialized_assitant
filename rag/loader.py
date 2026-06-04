@@ -1,10 +1,11 @@
+from datetime import datetime
 import os
 
 print(os.getcwd())
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 
-
+import uuid
 # Read all PDFs in the directory and load them as documents
 def process_all_pdfs(directory):
 
@@ -20,7 +21,7 @@ def process_all_pdfs(directory):
     print(f"Found {len(pdf_files)} PDF files in directory: {directory}")
 
     for pdf in pdf_files:
-
+        
         print(f"Processing file: {pdf.name}")
 
         try:
@@ -28,11 +29,16 @@ def process_all_pdfs(directory):
             loader = PyPDFLoader(str(pdf))
 
             documents = loader.load()
+            document_id=str(uuid.uuid4())
 
             # Add metadata
             for doc in documents:
-                doc.metadata["source"] = pdf.name
-                doc.metadata["file_type"] = "pdf"
+                doc.metadata.update({
+                "source": pdf.name,
+                "file_type": "pdf",
+                "document_id": document_id,
+                "upload_time": str(datetime.now())
+                })
 
             # Add documents to master list
             all_documents.extend(documents)

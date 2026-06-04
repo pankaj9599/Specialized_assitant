@@ -53,29 +53,33 @@ class VectorStore:
         embeddings_list=[]
 
         for i,doc in enumerate(documents):
+            print(f"\nResult {i+1}")
+            print(doc["document"][:300])
+            print("\nMetadata:")
+            print(doc["metadata"])
             doc_id=str(uuid.uuid4())
             ids.append(doc_id)
-        metadata = {
-        "doc_index": i,
-        "content_length": len(doc.page_content)
-    }
-        metadata.append(doc_metadata)
+            metadata = {
+            "doc_index": i,
+            "content_length": len(doc.page_content)
+            }
+            doc_metadata.append(metadata)
 
-        documents_text.append(doc.page_content)
-        embeddings_list.append(embeddings[i].tolist())
+            documents_text.append(doc.page_content)
+            embeddings_list.append(embeddings[i].tolist())
 
-        try:
-            self.collection.add(
-                ids=ids,
-                embeddings=embeddings_list,
-                documents=documents_text,
-                metadatas=metadata
-            )
-            print(f"successfully added {len(documents)} documents to vector store")
-            print(f"current collection size: {self.collection.count()}")
-        except Exception as e:
-            print(f"error adding documents to vector store:{e}")
-            raise
+            try:
+                self.collection.add(
+                    ids=ids,
+                    embeddings=embeddings_list,
+                    documents=documents_text,
+                    metadatas=metadata
+                )
+                print(f"successfully added {len(documents)} documents to vector store")
+                print(f"current collection size: {self.collection.count()}")
+            except Exception as e:
+                print(f"error adding documents to vector store:{e}")
+                raise
     
 
 

@@ -2,7 +2,7 @@ from tool.tavily_tool import tavily_tool
 from tool.llm_tool import llm
 def web_agent(state):
     print("Running web")
-    query = state["query"]
+    query=state.get("rewritten_query", state["query"])
     
     # Simulate web search results
     web_results = tavily_tool.invoke(query)

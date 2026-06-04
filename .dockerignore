@@ -1,0 +1,15 @@
+.venv
+.git
+.gitignore
+
+__pycache__
+*.pyc
+*.pyo
+
+.env
+
+.pytest_cache
+
+.DS_Store
+
+langsmith_logs

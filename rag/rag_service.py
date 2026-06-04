@@ -30,8 +30,11 @@ vectorStore = VectorStore()
 
 if vectorStore.collection.count() == 0:
     print("Collection empty. Building vector database...")
-    all_pdfs=process_all_pdfs("data/pdfs")
 
+    session_id=str(uuid.uuid4())
+    print(f"Session ID: {session_id}")
+    all_pdfs=process_all_pdfs("data/pdfs")
+    
     chunks = split_documents(
         all_pdfs,
         chunk_size=1000,
@@ -55,6 +58,7 @@ if vectorStore.collection.count() == 0:
     embeddings_list = []
 
     for i, doc in enumerate(chunks):
+        
 
         ids.append(str(uuid.uuid4()))
 
@@ -66,7 +70,8 @@ if vectorStore.collection.count() == 0:
             "doc_index": i,
             "content_length": len(
                 doc.page_content
-            )
+            ),
+            "session_id": session_id[0]
         }
 
         if isinstance(doc.metadata, dict):

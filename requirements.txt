@@ -10,3 +10,5 @@ sentence_transformers
 chromadb
 pypdf
 langgraph-cli[inmem]
+pymongo
+pandas

@@ -1,0 +1,7 @@
+query,expected_agent
+What is RAG?,hybrid_agent
+What is MCP?,hybrid_agent
+Latest OpenAI news,web_agent
+Latest AI agent frameworks,web_agent
+Compare CrewAI and LangGraph,research_agent
+Advantages and disadvantages of MCP,research_agent
